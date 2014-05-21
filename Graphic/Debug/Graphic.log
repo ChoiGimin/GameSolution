@@ -1,5 +1,5 @@
-﻿빌드 시작: 2014-05-21 오후 12:57:21
-     1>3 노드의 "C:\Users\LG\Documents\GitHub\Game\Game\Graphic\Graphic.vcxproj" 프로젝트(rebuild 대상)입니다.
+﻿빌드 시작: 2014-05-21 오후 4:44:44
+     1>2 노드의 "C:\Users\LG\Documents\GitHub\GameSolution\Graphic\Graphic.vcxproj" 프로젝트(rebuild 대상)입니다.
      1>_PrepareForClean:
          "Debug\Graphic.lastbuildstate" 파일을 삭제하고 있습니다.
        InitializeBuildStatus:
@@ -10,14 +10,14 @@
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\Graphic.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DxInit.cpp
          DxInit.cpp
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\LG\Documents\GitHub\Game\Game\Debug\Graphic.lib" /NOLOGO Debug\DxInit.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\LG\Documents\GitHub\GameSolution\Debug\Graphic.lib" /NOLOGO Debug\DxInit.obj
          Debug\stdafx.obj
-         Graphic.vcxproj -> C:\Users\LG\Documents\GitHub\Game\Game\Debug\Graphic.lib
+         Graphic.vcxproj -> C:\Users\LG\Documents\GitHub\GameSolution\Debug\Graphic.lib
        FinalizeBuildStatus:
          "Debug\Graphic.unsuccessfulbuild" 파일을 삭제하고 있습니다.
          "Debug\Graphic.lastbuildstate"에 연결(touching)하고 있습니다.
-     1>"C:\Users\LG\Documents\GitHub\Game\Game\Graphic\Graphic.vcxproj" 프로젝트를 빌드했습니다(rebuild 대상).
+     1>"C:\Users\LG\Documents\GitHub\GameSolution\Graphic\Graphic.vcxproj" 프로젝트를 빌드했습니다(rebuild 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:03.69
+경과 시간: 00:00:03.11

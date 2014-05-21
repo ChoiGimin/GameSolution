@@ -1,0 +1,18 @@
+thread
+
+병렬적으로 실행시켜줌
+
+wxWidget
+mfc랑 비슷함
+간단한 구조로 되어있음.
+
+cMaterial
+cLiht
+cVertexBuffer
+cIndexBuffer
+Matrix44 localTm
+Matrix44 worldTm
+
+cModel
+
+클래스를 만들것임

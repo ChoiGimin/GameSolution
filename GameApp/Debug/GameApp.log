@@ -1,40 +1,33 @@
-﻿빌드 시작: 2014-05-21 오후 12:57:24
-     1>4 노드의 "C:\Users\LG\Documents\GitHub\Game\Game\GameApp\GameApp.vcxproj" 프로젝트(rebuild 대상)입니다.
-     1>_PrepareForClean:
-         "Debug\GameApp.lastbuildstate" 파일을 삭제하고 있습니다.
-       InitializeBuildStatus:
+﻿빌드 시작: 2014-05-21 오후 4:55:04
+     1>2 노드의 "C:\Users\LG\Documents\GitHub\GameSolution\GameApp\GameApp.vcxproj" 프로젝트(build 대상)입니다.
+     1>InitializeBuildStatus:
          "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\GameApp.unsuccessfulbuild"을(를) 만들고 있습니다.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\GameApp.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
+         모든 출력이 최신 상태입니다.
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\GameApp.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GameApp.cpp
          GameApp.cpp
+     1>c:\users\lg\documents\github\gamesolution\gameapp\gameapp.cpp(41): warning C4244: '=' : 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\users\lg\documents\github\gamesolution\gameapp\gameapp.cpp(42): warning C4244: '=' : 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
        ManifestResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\GameApp.exe.embed.manifest.res" Debug\GameApp_manifest.rc 
+         모든 출력이 최신 상태입니다.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\LG\Documents\GitHub\Game\Game\Debug\GameApp.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\GameApp.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\LG\Documents\GitHub\Game\Game\Debug\GameApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\LG\Documents\GitHub\Game\Game\Debug\GameApp.lib" /MACHINE:X86 Debug\GameApp.exe.embed.manifest.res
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\LG\Documents\GitHub\GameSolution\Debug\GameApp.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\GameApp.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\LG\Documents\GitHub\GameSolution\Debug\GameApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\LG\Documents\GitHub\GameSolution\Debug\GameApp.lib" /MACHINE:X86 Debug\GameApp.exe.embed.manifest.res
          Debug\GameApp.obj
          Debug\stdafx.obj
-         C:\Users\LG\Documents\GitHub\Game\Game\Debug\Common.lib
-         C:\Users\LG\Documents\GitHub\Game\Game\Debug\Framework.lib
-         C:\Users\LG\Documents\GitHub\Game\Game\Debug\Graphic.lib
+         C:\Users\LG\Documents\GitHub\GameSolution\Debug\Common.lib
+         C:\Users\LG\Documents\GitHub\GameSolution\Debug\Framework.lib
+         C:\Users\LG\Documents\GitHub\GameSolution\Debug\Graphic.lib
        Manifest:
-         "Debug\GameApp.exe.embed.manifest" 파일을 삭제하고 있습니다.
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\GameApp.exe.embed.manifest" /manifest Debug\GameApp.exe.intermediate.manifest
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\GameApp.exe.embed.manifest.res" Debug\GameApp_manifest.rc 
+         모든 출력이 최신 상태입니다.
        LinkEmbedManifest:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\LG\Documents\GitHub\Game\Game\Debug\GameApp.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\GameApp.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\LG\Documents\GitHub\Game\Game\Debug\GameApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\LG\Documents\GitHub\Game\Game\Debug\GameApp.lib" /MACHINE:X86 Debug\GameApp.exe.embed.manifest.res
-         Debug\GameApp.obj
-         Debug\stdafx.obj
-         C:\Users\LG\Documents\GitHub\Game\Game\Debug\Common.lib
-         C:\Users\LG\Documents\GitHub\Game\Game\Debug\Framework.lib
-         C:\Users\LG\Documents\GitHub\Game\Game\Debug\Graphic.lib
-         GameApp.vcxproj -> C:\Users\LG\Documents\GitHub\Game\Game\Debug\GameApp.exe
+         모든 출력이 최신 상태입니다.
+         GameApp.vcxproj -> C:\Users\LG\Documents\GitHub\GameSolution\Debug\GameApp.exe
        FinalizeBuildStatus:
          "Debug\GameApp.unsuccessfulbuild" 파일을 삭제하고 있습니다.
          "Debug\GameApp.lastbuildstate"에 연결(touching)하고 있습니다.
-     1>"C:\Users\LG\Documents\GitHub\Game\Game\GameApp\GameApp.vcxproj" 프로젝트를 빌드했습니다(rebuild 대상).
+     1>"C:\Users\LG\Documents\GitHub\GameSolution\GameApp\GameApp.vcxproj" 프로젝트를 빌드했습니다(build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:07.36
+경과 시간: 00:00:01.10

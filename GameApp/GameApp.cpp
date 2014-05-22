@@ -273,8 +273,6 @@ bool cGameApp::InitVertexBuffer()
    proj.SetProjection(D3DX_PI * 0.5f, (float)800 / (float) 600, 1.f, 1000.0f) ;
    m_DxDevice->SetTransform(D3DTS_PROJECTION, (D3DXMATRIX*)&proj) ;
 
-   //m_DxDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
-      //m_DxDevice->SetRenderState(D3DRS_LIGHTING, false);
    m_DxDevice->LightEnable (
       1, // 활성화/ 비활성화 하려는 광원 리스트 내의 요소
       true); // true = 활성화 ， false = 비활성화
@@ -416,6 +414,4 @@ void cGameApp::DxRender (Matrix44 &tm, D3DMATERIAL9 &material, LPDIRECT3DVERTEXB
 	m_DxDevice->SetIndices(idxBuff);
 	m_DxDevice->SetFVF( Vertex::FVF );
 	m_DxDevice->DrawIndexedPrimitive( D3DPT_TRIANGLELIST, 0, 0, vertexSize, 0, faceSize);
-
-
 }

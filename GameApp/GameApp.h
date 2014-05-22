@@ -29,10 +29,12 @@ private:
 	int m_obstacleVtxSize;
 	int m_obstacleFaceSize;
 
-	Matrix44 mat_local;
-	Matrix44 mat_tile[4][5];
-	Matrix44 mat_obstacle;
+	Matrix44 mat_local;//팽귄 매트릭스 값
+	Matrix44 mat_tile[4][5]; //타일
+	Matrix44 mat_obstacle; // 장애물
+
 	Matrix44 mat_world;
+
 	vector<Vector3> verteices;
 
 

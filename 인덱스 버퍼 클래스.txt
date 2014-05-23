@@ -1,0 +1,34 @@
+cIndexBuff::cIndexBuff()
+ m_pIdxBuff(NULL)
+{
+}
+cIndexBuff::~cIndexBuff()
+{
+	if(m_pIdxBuff)
+	{
+		m_pIdxBuff->Release();
+		m_pIdxBuff = NULL;
+	}
+}
+
+bool cIndexBuff::Create
+{
+
+}
+
+void cIndexBuff::lock()
+{
+	WORD *indices = NULL;
+	m_pIdxBuff->Lock(0,0,(void**)&indices,0);
+	return indices;
+}
+
+void cIndexBuff::UnLock
+{
+	m_pIdxBuff->Unlock();
+}
+
+void cIndexBuff::Bind()
+{
+	GetDevice()=>SetIndiecs(m_pIdxBuff);
+}

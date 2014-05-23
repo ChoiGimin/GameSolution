@@ -43,6 +43,12 @@ bool cGameApp::OnInit()
 		}
 	}
 
+	for(int j = 0; j < OBSTACLEOBJ; j++)
+	{
+		mat_obstacle[j]._41 = rand()%(-300 + rand()%300);
+		mat_obstacle[j]._43 = rand()%1000;
+	}
+
 	_penguinState = RRUN;
 	_isJump = false;
 	_jumpCount = 0;
@@ -64,6 +70,9 @@ bool cGameApp::OnInit()
    m_obstacleBuff = NULL;
    m_obstacleIndexBuff = NULL;
 
+   m_mtrl.InitRed();
+
+   /*
    ZeroMemory(&g_redMtrl, sizeof(g_redMtrl));
    g_redMtrl.Ambient = D3DXCOLOR(1,0,0,1);
    g_redMtrl.Diffuse = D3DXCOLOR(1,0,0,1);
@@ -77,10 +86,10 @@ bool cGameApp::OnInit()
    g_blueMtrl.Specular = D3DXCOLOR(0,0,1,1);
    g_blueMtrl.Emissive = D3DXCOLOR(0,0,0,1);
    g_blueMtrl.Power = 0;
-
+   */
    ReadModelFile("penguin.dat", m_penguinBuff, m_penguinVtxSize, m_penguinIndexBuff, m_penguinFaceSize);
    ReadModelFile("tile.dat", m_tileBuff, m_tileVtxSize, m_tileIndexBuff, m_tileFaceSize);
-   ReadModelFile("cube.dat", m_obstacleBuff, m_obstacleVtxSize, m_obstacleIndexBuff, m_penguinFaceSize);
+   ReadModelFile("obstacle.dat", m_obstacleBuff, m_obstacleVtxSize, m_obstacleIndexBuff, m_obstacleFaceSize);
 
    //InitVertexBuffer();
 
@@ -103,21 +112,21 @@ bool cGameApp::OnInit()
    Vector3 dir = Vector3(0,0,0)-Vector3(0,2,-5);
    dir.Normalize();
    V.SetView(Vector3(0,200,-200), dir, Vector3(0,1,0));
-   m_DxDevice->SetTransform(D3DTS_VIEW, (D3DXMATRIX*)&V);
+   graphic::GetDevice()->SetTransform(D3DTS_VIEW, (D3DXMATRIX*)&V);
 
    Matrix44 proj;
    proj.SetProjection(D3DX_PI * 0.5f, (float)WINSIZEX / (float) WINSIZEY, 1.f, 1000.0f) ;
-   m_DxDevice->SetTransform(D3DTS_PROJECTION, (D3DXMATRIX*)&proj) ;
+   graphic::GetDevice()->SetTransform(D3DTS_PROJECTION, (D3DXMATRIX*)&proj) ;
 
-   m_DxDevice->SetLight(0, &g_Light); // 광원 설정.
-   m_DxDevice->LightEnable (
+   graphic::GetDevice()->SetLight(0, &g_Light); // 광원 설정.
+   graphic::GetDevice()->LightEnable (
 	   0, // 활성화/ 비활성화 하려는 광원 리스트 내의 요소
 	   true); // true = 활성화 ， false = 비활성화
 
 
 
 
-   m_DxDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+   //graphic::GetDevice()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 
    return true;
 }
@@ -129,7 +138,7 @@ void cGameApp::OnUpdate(const float elapseT)
 	Vector3 dir = Vector3(0,0,0)-Vector3(0,2,-5);
 	dir.Normalize();
 	V.SetView(Vector3(0,200, mat_local._43 - 200), dir, Vector3(0,1,0));
-	m_DxDevice->SetTransform(D3DTS_VIEW, (D3DXMATRIX*)&V);
+	graphic::GetDevice()->SetTransform(D3DTS_VIEW, (D3DXMATRIX*)&V);
 	
 
 	mat_local._43 += 6.f;
@@ -144,6 +153,17 @@ void cGameApp::OnUpdate(const float elapseT)
 			}
 		}
 	}
+
+	for(int j = 0; j < OBSTACLEOBJ; j++)
+	{
+		if(mat_obstacle[j]._43 < mat_local._43 -200)
+		{
+			mat_obstacle[j]._41 = rand()%(-300 + rand()%600);
+			mat_obstacle[j]._43 = mat_local._43 + rand()%1000;
+		}
+	}
+
+
 
 	if(_penguinState == JUMP && _isJump)
 	{
@@ -175,7 +195,7 @@ void cGameApp::OnUpdate(const float elapseT)
 void cGameApp::OnRender(const float elapseT)
 {
    //화면 청소
-   if (SUCCEEDED(m_DxDevice->Clear( 
+   if (SUCCEEDED(graphic::GetDevice()->Clear( 
       0,         //청소할 영역의 D3DRECT 배열 갯수      ( 전체 클리어 0 )
       NULL,      //청소할 영역의 D3DRECT 배열 포인터      ( 전체 클리어 NULL )
       D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL,   //청소될 버퍼 플레그 ( D3DCLEAR_TARGET 컬러버퍼, D3DCLEAR_ZBUFFER 깊이버퍼, D3DCLEAR_STENCIL 스텐실버퍼
@@ -184,7 +204,7 @@ void cGameApp::OnRender(const float elapseT)
       0               //스텐실 버퍼를 채울값
       )))
    {
-      m_DxDevice->BeginScene();
+      graphic::GetDevice()->BeginScene();
 
 	  //펭귄을 그릴 때 필요한 것 ( 함수로 만듦 )
 	  DxRender(mat_local, g_redMtrl, m_penguinBuff, m_penguinIndexBuff, 
@@ -201,18 +221,24 @@ void cGameApp::OnRender(const float elapseT)
 	  }
 
 	  // Obstacle
+	  //mat_obstacle.SetIdentity();
+	  //mat_obstacle._43 = rand()%100;
+
+	  for(int j = 0; j < OBSTACLEOBJ; j++)
 	  {
-		  mat_obstacle.SetIdentity();
-		  //mat_obstacle._43 = rand()%100;
-		  DxRender(mat_obstacle, g_blueMtrl, m_obstacleBuff, m_obstacleIndexBuff,
+		  m_mtrl.Bind();
+		  DxRender(mat_obstacle[j], g_blueMtrl, m_obstacleBuff, m_obstacleIndexBuff,
 			  m_obstacleVtxSize, m_obstacleFaceSize);
 	  }
+
+	  
+
 	  
 
 	  //랜더링 끝
-      m_DxDevice->EndScene();
+      graphic::GetDevice()->EndScene();
       //랜더링이 끝났으면 랜더링된 내용 화면으로 전송
-      m_DxDevice->Present( NULL, NULL, NULL, NULL );
+      graphic::GetDevice()->Present( NULL, NULL, NULL, NULL );
    }
 }
 
@@ -237,12 +263,12 @@ void cGameApp::MessageProc( UINT message, WPARAM wParam, LPARAM lParam)
          {
          case VK_LEFT:
             {
-				mat_local._41 -= 3.f;
+				mat_local._41 -= 6.f;
             }
             break;
          case VK_RIGHT:
             {
-				mat_local._41 += 3.f;
+				mat_local._41 += 6.f;
             }
             break;
          case VK_UP:
@@ -267,13 +293,13 @@ bool cGameApp::InitVertexBuffer()
    Vector3 dir = Vector3(0,0,0)-Vector3(0,0,-5);
    dir.Normalize();
    V.SetView(Vector3(0,0,-500), dir, Vector3(0,1,0));
-   m_DxDevice->SetTransform(D3DTS_VIEW, (D3DXMATRIX*)&V);
+   graphic::GetDevice()->SetTransform(D3DTS_VIEW, (D3DXMATRIX*)&V);
 
    Matrix44 proj;
    proj.SetProjection(D3DX_PI * 0.5f, (float)800 / (float) 600, 1.f, 1000.0f) ;
-   m_DxDevice->SetTransform(D3DTS_PROJECTION, (D3DXMATRIX*)&proj) ;
+   graphic::GetDevice()->SetTransform(D3DTS_PROJECTION, (D3DXMATRIX*)&proj) ;
 
-   m_DxDevice->LightEnable (
+   graphic::GetDevice()->LightEnable (
       1, // 활성화/ 비활성화 하려는 광원 리스트 내의 요소
       true); // true = 활성화 ， false = 비활성화
 
@@ -297,7 +323,7 @@ bool cGameApp::ReadModelFile( const string &fileName, LPDIRECT3DVERTEXBUFFER9 &v
    vtxSize = numVertices;
 
    // 버텍스 버퍼 생성.
-   if (FAILED(m_DxDevice->CreateVertexBuffer( numVertices * sizeof(Vertex),
+   if (FAILED(graphic::GetDevice()->CreateVertexBuffer( numVertices * sizeof(Vertex),
       D3DUSAGE_WRITEONLY, Vertex::FVF,
       D3DPOOL_MANAGED, &vtxBuff, NULL)))
    {
@@ -326,7 +352,7 @@ bool cGameApp::ReadModelFile( const string &fileName, LPDIRECT3DVERTEXBUFFER9 &v
 
    faceSize = numIndices;
 
-   if (FAILED(m_DxDevice->CreateIndexBuffer(numIndices*3*sizeof(WORD), 
+   if (FAILED(graphic::GetDevice()->CreateIndexBuffer(numIndices*3*sizeof(WORD), 
       D3DUSAGE_WRITEONLY,
       D3DFMT_INDEX16,
       D3DPOOL_MANAGED,
@@ -408,10 +434,10 @@ void cGameApp::ComputeNormals(LPDIRECT3DVERTEXBUFFER9 vtxBuff, int vtxSize,  LPD
 
 void cGameApp::DxRender (Matrix44 &tm, D3DMATERIAL9 &material, LPDIRECT3DVERTEXBUFFER9 vertexBuff, LPDIRECT3DINDEXBUFFER9 idxBuff, int vertexSize, int faceSize)
 {
-	m_DxDevice->SetTransform(D3DTS_WORLD, (D3DXMATRIX*)&tm);
-	m_DxDevice->SetMaterial(&material);
-	m_DxDevice->SetStreamSource( 0, vertexBuff, 0, sizeof(Vertex) ); //그릴 물체
-	m_DxDevice->SetIndices(idxBuff);
-	m_DxDevice->SetFVF( Vertex::FVF );
-	m_DxDevice->DrawIndexedPrimitive( D3DPT_TRIANGLELIST, 0, 0, vertexSize, 0, faceSize);
+	graphic::GetDevice()->SetTransform(D3DTS_WORLD, (D3DXMATRIX*)&tm);
+	
+	graphic::GetDevice()->SetStreamSource( 0, vertexBuff, 0, sizeof(Vertex) ); //그릴 물체
+	graphic::GetDevice()->SetIndices(idxBuff);
+	graphic::GetDevice()->SetFVF( Vertex::FVF );
+	graphic::GetDevice()->DrawIndexedPrimitive( D3DPT_TRIANGLELIST, 0, 0, vertexSize, 0, faceSize);
 }

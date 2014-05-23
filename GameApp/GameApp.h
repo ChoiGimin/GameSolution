@@ -2,6 +2,7 @@
 
 #define WINSIZEX 800
 #define WINSIZEY 600
+#define OBSTACLEOBJ 3
 
 enum penguinState
 {
@@ -31,12 +32,13 @@ private:
 
 	Matrix44 mat_local;//팽귄 매트릭스 값
 	Matrix44 mat_tile[4][5]; //타일
-	Matrix44 mat_obstacle; // 장애물
+	Matrix44 mat_obstacle[OBSTACLEOBJ]; // 장애물
 
 	Matrix44 mat_world;
 
 	vector<Vector3> verteices;
 
+	graphic::cMaterial m_mtrl;
 
 	// 재질
 	D3DMATERIAL9 g_redMtrl;

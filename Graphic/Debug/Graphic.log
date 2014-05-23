@@ -1,23 +1,23 @@
-﻿빌드 시작: 2014-05-21 오후 4:44:44
-     1>2 노드의 "C:\Users\LG\Documents\GitHub\GameSolution\Graphic\Graphic.vcxproj" 프로젝트(rebuild 대상)입니다.
-     1>_PrepareForClean:
-         "Debug\Graphic.lastbuildstate" 파일을 삭제하고 있습니다.
-       InitializeBuildStatus:
-         "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\Graphic.unsuccessfulbuild"을(를) 만들고 있습니다.
+﻿빌드 시작: 2014-05-22 오후 4:39:35
+     1>2 노드의 "C:\Users\LG\Documents\GitHub\GameSolution\Graphic\Graphic.vcxproj" 프로젝트(build 대상)입니다.
+     1>InitializeBuildStatus:
+         "Debug\Graphic.unsuccessfulbuild"에 연결(touching)하고 있습니다.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\Graphic.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\Graphic.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DxInit.cpp
-         DxInit.cpp
+         모든 출력이 최신 상태입니다.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\Graphic.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt lighting.cpp
+         lighting.cpp
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\LG\Documents\GitHub\GameSolution\Debug\Graphic.lib" /NOLOGO Debug\DxInit.obj
+         Debug\lighting.obj
+         Debug\material.obj
+         Debug\renderer.obj
          Debug\stdafx.obj
          Graphic.vcxproj -> C:\Users\LG\Documents\GitHub\GameSolution\Debug\Graphic.lib
        FinalizeBuildStatus:
          "Debug\Graphic.unsuccessfulbuild" 파일을 삭제하고 있습니다.
          "Debug\Graphic.lastbuildstate"에 연결(touching)하고 있습니다.
-     1>"C:\Users\LG\Documents\GitHub\GameSolution\Graphic\Graphic.vcxproj" 프로젝트를 빌드했습니다(rebuild 대상).
+     1>"C:\Users\LG\Documents\GitHub\GameSolution\Graphic\Graphic.vcxproj" 프로젝트를 빌드했습니다(build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:03.11
+경과 시간: 00:00:00.40
